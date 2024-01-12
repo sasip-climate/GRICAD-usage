@@ -1,6 +1,6 @@
 # Compute on GRICAD servers
 
-Once you have set up your account (check [this tutorial](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md)) and joined teh pr-sasip group, you can now compute on CPU (ssh dahu.ciment) or GPU (ssh bigfoot.ciment)
+Once you have set up your account (check [this tutorial](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md)) and joined the pr-sasip group, you can now compute on CPU (ssh dahu.ciment) or GPU (ssh bigfoot.ciment)
 
 ### Workspaces
 

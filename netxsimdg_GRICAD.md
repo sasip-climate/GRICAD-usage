@@ -1,9 +1,12 @@
 # How to run nextsimdg on GRICAD
 
-Once you are all [set up on GRICAD servers](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md) and familiar with how to [compute there](https://github.com/sasip-climate/GRICAD-usage/blob/main/compute_GRICAD.md), you may want to run the latest version of neXtSIM-DG.
+Once you are all [set up on GRICAD servers](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md) and familiar with how to [compute there](https://github.com/sasip-climate/GRICAD-usage/blob/main/compute_GRICAD.md), you may want to run the latest version of neXtSIM-DG. Below we provide a tutorial how to comple nextsim-dg and run an example simulation.
 
-- Create your computing environment :
-We need some librairies so we create a conda environment that we are going to activate each time we want to compile neXtSIM. It is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. The create_conda_env_nextsimdg.sh script :
+## Create your computing environment :
+To compile the neXtSIM-DG code, you need some specific librairies, namely `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`. 
+So you first need (once for all) to create a conda environment that you'll then activate _each time_ we want to compile neXtSIM-DG. This installation of the environment is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. One way to proceed is to use the environment file that we provide here (2023-01-15-environment-nextsimdg.yml, tested on GRICAD). 
+
+The create_conda_env_nextsimdg.sh script :
 
 ```bash
 #!/bin/bash
@@ -16,12 +19,8 @@ We need some librairies so we create a conda environment that we are going to ac
 #OAR -t devel
 
 source /applis/environments/conda.sh
-conda create --name nextsimdg
-conda activate nextsimdg
-conda install -c conda-forge boost -y
-conda install -c anaconda cmake -y
-conda install -c conda-forge eigen -y
-conda install -c conda-forge netcdf-cxx4 -y
+conda env create -n nextsimdg -f 2023-01-15-environment-nextsimdg.yml
+
 ```
 
 And then we run it :

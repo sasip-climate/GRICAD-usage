@@ -9,7 +9,7 @@ We need some librairies so we create a conda environment that we are going to ac
 #!/bin/bash
 
 #OAR -n nextsimdg
-#OAR -l /nodes=1/core=1,walltime=00:11:30
+#OAR -l /nodes=1/core=1,walltime=00:30:30
 #OAR --stdout conda.%jobid%.stdout
 #OAR --stderr conda.%jobid%.stderr
 #OAR --project pr-sasip
@@ -56,7 +56,7 @@ make
 It should produce a nextsim executable in the build repository.
 
 - Run on GRICAD :
-  - copy, adapt and put this run_june23_gricad.sh script in the run repository of netxsimdg :
+  - copy, adapt and put this run_june23_gricad.sh script in the `/run/` repository of netxsimdg :
  
 ```bash
 #!/bin/bash

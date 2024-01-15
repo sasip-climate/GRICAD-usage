@@ -4,7 +4,7 @@ Once you are all [set up on GRICAD servers](https://github.com/sasip-climate/cat
 
 ## Create your computing environment :
 To compile the neXtSIM-DG code, you need some specific librairies, namely `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`. 
-So you first need (once for all) to create a conda environment that you'll then activate _each time_ we want to compile neXtSIM-DG. This installation of the environment is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. One way to proceed is to use the environment file that we provide here (2023-01-15-environment-nextsimdg.yml, tested on GRICAD). 
+So you first need (once for all) to create a conda environment that contains all these libraries, and you'll then have to activate it _each time_ we want to compile neXtSIM-DG, as explained below. The installation of the environment is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. One way to proceed is to use the environment file that we provide here (2023-01-15-environment-nextsimdg.yml, tested on GRICAD). 
 
 The create_conda_env_nextsimdg.sh script :
 

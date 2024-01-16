@@ -114,7 +114,7 @@ ln -sf /summer/sasip/model-forcings/nextsim-dg/25km_NH.ERA5_2010-01-01_2011-01-0
 ln -sf /summer/sasip/model-forcings/nextsim-dg/25km_NH.TOPAZ4_2010-01-01_2011-01-01.nc .
 
 # run the model
-./nextsim --config-file config_june23.cfg --model.run 86400 > time.step
+./nextsim --config-file config_june23.cfg --model.run 86400 --ConfigOutput.filename myoutput.nc > time.step
 ```
 
 * Makes the script executable and run it as a job with:

@@ -123,6 +123,6 @@ ln -sf /summer/sasip/model-forcings/nextsim-dg/25km_NH.TOPAZ4_2010-01-01_2011-01
 chmod +x  run_june23_gricad.sh
 oarsub -S ./run_june23_gricad.sh
 ```
-NOTE: In the script above, you run the model using the config file `config_june23.cfg` where all the parameters are set. Any parameter set from the command line will overwrite the corresponding parameter value in the config file. In the example above, `--model.run 86400` sets the model run to 1 day (value given in seconds). 
+NOTE: In the script above, you run the model using the config file `config_june23.cfg` where all the parameters are set. Any parameter set from the command line will overwrite the corresponding parameter value in the config file. In the example above, `--model.run 86400` sets the model run to 1 day (value given in seconds). The option `--ConfigOutput.filename  myoutput.nc`reset the name of the output file to  ` myoutput.nc`.
 
-* Once it has run successfully, you can see that a new file  have been created in the current directory (`output_simudyn_5d.nc`)   that contains the evolution of sea ice simulated by the model over the period we just set (1 day in the above example). 
+* Once it has run successfully, you can see that a new file  have been created in the current directory (i.e., `myoutput.nc`)   that contains the evolution of sea ice simulated by the model over the period we just set (1 day in the above example). 

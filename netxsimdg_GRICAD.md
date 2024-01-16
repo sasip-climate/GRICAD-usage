@@ -88,7 +88,7 @@ make
 It takes a few minutes to compile,  and in the end, if successful,  it should produce a `nextsim` executable  located in the build repository.
 
 ## 4.  Run a simulation :
-We give below the same example of simulation as the demo we ran in June 2023 at the General assembly meeting.
+We give below the same example of simulation as the demo we ran in June 2023 at the SASIP General assembly meeting.
 
 * Copy, adapt and put this `run_june23_gricad.sh` script in the `./run/` repository :
  

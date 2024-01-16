@@ -85,7 +85,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 ```
 
-It takes a few minutes to compile,  and in the end, if successful,  it should produce a `nextsim` executable  located in the build repository.
+Be patient, as it might take several  minutes to compile. In the end, if successful,  it should produce a `nextsim` executable  located in the build repository.
 
 ## 4.  Run a simulation :
 We give below the same example of simulation as the demo we ran in June 2023 at the SASIP General assembly meeting.
@@ -124,3 +124,5 @@ chmod +x  run_june23_gricad.sh
 oarsub -S ./run_june23_gricad.sh
 ```
 NOTE: In the script above, you run the model using the config file `config_june23.cfg` where all the parameters are set. Any parameter set from the command line will overwrite the corresponding parameter value in the config file. In the example above, `--model.run 86400` sets the model run to 1 day (value given in seconds). 
+
+* Once it has run successfully, you can see that a new file  have been created in the current directory (`output_simudyn_5d.nc`)   that contains the evolution of sea ice simulated by the model over the period we just set (1 day in the above example). 

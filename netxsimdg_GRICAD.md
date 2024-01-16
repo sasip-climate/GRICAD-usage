@@ -7,7 +7,7 @@ This tuto explains the different steps  to go through in order to compile and ru
 3. __Compile the code,__
 4. __Run a simulation__.
    
-<a name="part1"> ## 1. (Do it once for all) Set up the environment for nextSIM-DG </a> 
+## 1. <a name="part1"> (Do it once for all) Set up the environment for nextSIM-DG </a> 
 To compile the neXtSIM-DG code, you need some specific librairies, namely `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`. 
 One way to do so is to create a conda environment that contains all these libraries (do it once for all). And then you'll then have to activate this environment  _each time_ we want to compile neXtSIM-DG, as also explained below. 
 

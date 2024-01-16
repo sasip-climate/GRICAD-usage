@@ -19,7 +19,7 @@ The installation of the environment is a bit long to run on the frontal node so 
 #!/bin/bash
 
 #OAR -n nextsimdg
-#OAR -l /nodes=1/core=1,walltime=00:30:30
+#OAR -l /nodes=1/core=1,walltime=00:25:00
 #OAR --stdout conda.%jobid%.stdout
 #OAR --stderr conda.%jobid%.stderr
 #OAR --project pr-sasip

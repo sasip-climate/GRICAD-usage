@@ -3,9 +3,9 @@
 Once you are all [set up on GRICAD servers](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md) and familiar with how to [compute there](https://github.com/sasip-climate/GRICAD-usage/blob/main/compute_GRICAD.md), you may want to run the latest version of neXtSIM-DG. 
 This tuto explains the different steps  to go through in order to compile and run the nextSIM-DG code on the GRICAD server:
 1. _[Do it once for all]_ <a href="#part1"> __Set up the environment, i.e. install the specific libraries required for nextSIM-DG__ </a> 
-2. __Activate your nextSIM-DG environment__ _[Do it each time you want to re-compile the code]_,
-3. __Compile the code,__
-4. __Run a simulation__.
+2. <a href="#part2">__Activate your nextSIM-DG environment__</a>  _[Do it each time you want to re-compile the code]_,
+3. <a href="#part3"> __Compile the code,__</a> 
+4. <a href="#part4">__Run a simulation__.</a> 
    
 ## 1. <a name="part1"> (Do it once for all) Set up the environment for nextSIM-DG </a> 
 To compile the neXtSIM-DG code, you need some specific librairies, namely `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`. 
@@ -47,7 +47,7 @@ oarsub -S ./create_conda_env_nextsimdg.sh
 You can then monitor if your run is running and when it is finished with the command : `oarstat -u mygricadlogin`.
 
 
-## 2. Each time you start a new session and want to compile nextSIM-DG, activate its environment
+## 2. <a name="part2"> Each time you start a new session and want to compile nextSIM-DG, activate its environment </a> 
 
 * Activate:
 ```bash
@@ -65,7 +65,7 @@ It should contains the required packages: `cmake`,`boost`,`eigen`,`netcdf-cxx4`,
 You"re now ready to compile the NeXtSIM-DG code.
 
 
-## 3.  Compile neXtSIM-DG :
+## 3.  <a name="part3"> Compile neXtSIM-DG : </a> 
 
 ```bash
 # get latest version of the code from the github repo
@@ -87,7 +87,7 @@ make
 
 Be patient, as it might take several  minutes to compile. In the end, if successful,  it should produce a `nextsim` executable  located in the build repository.
 
-## 4.  Run a simulation :
+## 4.  <a name="part4"> Run a simulation : </a> 
 We give below the same example of simulation as the demo we ran in June 2023 at the SASIP General assembly meeting.
 
 * Copy, adapt and put this `run_june23_gricad.sh` script in the `./run/` repository :

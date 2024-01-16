@@ -106,7 +106,7 @@ We give below the same example of simulation as the demo we ran in June 2023 at 
 cd ~/your-path/nextsimdg/run
 
 # link to the executable you've just compiled
-ln -sf ../build/nextsim
+ln -sf ../build/nextsim .
 
 # link to the initial state and forcing files
 ln -sf /summer/sasip/model-forcings/nextsim-dg/init_25km_NH.nc .

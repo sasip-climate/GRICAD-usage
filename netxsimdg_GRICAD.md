@@ -2,15 +2,17 @@
 
 Once you are all [set up on GRICAD servers](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md) and familiar with how to [compute there](https://github.com/sasip-climate/GRICAD-usage/blob/main/compute_GRICAD.md), you may want to run the latest version of neXtSIM-DG. 
 
-his tuto explains the different steps  to go through in order to compile and run the nextSIM-DG code on the GRICAD server:
-1. (Do it once for all) Set up the environment (specific libraries required)  for nextSIM-DG 
-2. Activate your nextSIM-DG environment each time you want to re-compile the code
-3. Compile the code
-4. Run a simulation.
+This tuto explains the different steps  to go through in order to compile and run the nextSIM-DG code on the GRICAD server:
+1. ___[Do it once for all]_ Set up the environment, i.e. install the specific libraries required for nextSIM-DG__ 
+2. __Activate your nextSIM-DG environment each time you want to re-compile the code,__
+3. __Compile the code,__
+4. __Run a simulation__.
    
 ## 1. (Do it once for all) Set up the environment for nextSIM-DG 
 To compile the neXtSIM-DG code, you need some specific librairies, namely `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`. 
-You can do so by creating a conda environment that contains all these libraries (do it once for all), and then you'll then have to activate it _each time_ we want to compile neXtSIM-DG, as explained below. The installation of the environment is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. In the instruction below the conda environment is created from a file where all the required libraries are specified (2023-01-15-environment-nextsimdg.yml). 
+One way to do so is to create a conda environment that contains all these libraries (do it once for all). And then you'll then have to activate this environment  _each time_ we want to compile neXtSIM-DG, as also explained below. 
+
+The installation of the environment is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. In the instructions below, the conda environment is created from a file where all the required libraries are specified (i.e. `2023-01-15-environment-nextsimdg.yml`). 
 
 * Copy this script to your space on the GRICAD server. Let's name it `create_conda_env_nextsimdg.sh` :
 
@@ -24,8 +26,8 @@ You can do so by creating a conda environment that contains all these libraries 
 #OAR --project pr-sasip
 #OAR -t devel
 
-# link to the suggested environment file for conda:
-ln -sf 2/summer/sasip/023-01-15-environment-nextsimdg.yml
+# link to the required environment file for conda:
+ln -sf /summer/sasip/model-configurations/nextsim-DG/2023-01-15-environment-nextsimdg.yml .
 
 # activate conda
 source /applis/environments/conda.sh
@@ -34,7 +36,7 @@ source /applis/environments/conda.sh
 conda env create -n nextsimdg -f 2023-01-15-environment-nextsimdg.yml
 ```
 
-* Make this script an executable :
+* Make the above script an executable :
 ```bash
 chmod +x  create_conda_env_nextsimdg.sh
 ```
@@ -42,8 +44,7 @@ chmod +x  create_conda_env_nextsimdg.sh
 * Run this script on a computing node
 oarsub -S ./create_conda_env_nextsimdg.sh
 ```
-
-You can monitor if your run is running and when it is finished with the command : `oarstat -u mygricadlogin`.
+You can then monitor if your run is running and when it is finished with the command : `oarstat -u mygricadlogin`.
 
 
 ## 2. Each time you start a new session and want to compile nextSIM-DG, activate its environment
@@ -54,41 +55,56 @@ source /applis/environments/conda.sh
 conda activate nextsimdg
 ```
 
-* As a check, print out the list of libraries installed in this environment:
+* As a check, you can print out the list of libraries installed in this environment:
 ```bash
 source /applis/environments/conda.sh
 conda list
 ```
+It should contains the required packages: `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`.
 
+You"re now ready to compile the NeXtSIM-DG code.
 
 
 ## 3.  Compile neXtSIM-DG :
 
 ```bash
+# get latest version of the code from the github repo
 git clone -b develop https://github.com/nextsimhub/nextsimdg.git nextsimdg
+
+# go to directory
 cd nextsimdg
+
+# create and go to a build directory where the code is going to be compiled
 mkdir -p build
 cd build
+
+# run cmake to prepare the compilation (Amongs other things it checks that all the required packages are there).
 cmake -DCMAKE_BUILD_TYPE=Release ..
+
+# compile by running make
 make
 ```
 
-It should produce a nextsim executable in the build repository.
+It takes a few minutes to compile,  and in the end, if successful,  it should produce a `nextsim` executable  located in the build repository.
 
-- Run on GRICAD :
-  - copy, adapt and put this run_june23_gricad.sh script in the `/run/` repository of netxsimdg :
+## 4.  Run a simulation :
+We give below the same example of simulation as the demo we ran in June 2023 at the General assembly meeting.
+
+* Copy, adapt and put this `run_june23_gricad.sh` script in the `./run/` repository :
  
 ```bash
 #!/bin/bash
 
 #OAR -n nextsimdg
-#OAR -l /nodes=1/core=4,walltime=00:11:30
+#OAR -l /nodes=1/core=4,walltime=00:30:00
 #OAR --stdout nextsimdg.%jobid%.stdout
 #OAR --stderr nextsimdg.%jobid%.stderr
 #OAR --project pr-sasip
 #OAR -t devel
 
-cd ~/git/nextsimdg/run
+# go to nextsim-dg directory
+cd ~/your-path/nextsimdg/run
+
 
 ln -sf ../build/nextsim
 

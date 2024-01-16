@@ -1,10 +1,9 @@
 # How to run NextSIM-DG on GRICAD
 
 Once you are all [set up on GRICAD servers](https://github.com/sasip-climate/catalog-shared-data-SASIP/blob/main/gricad.md) and familiar with how to [compute there](https://github.com/sasip-climate/GRICAD-usage/blob/main/compute_GRICAD.md), you may want to run the latest version of neXtSIM-DG. 
-
 This tuto explains the different steps  to go through in order to compile and run the nextSIM-DG code on the GRICAD server:
-1. ___[Do it once for all]_ Set up the environment, i.e. install the specific libraries required for nextSIM-DG__ 
-2. __Activate your nextSIM-DG environment each time you want to re-compile the code,__
+1. _[Do it once for all]_ __Set up the environment, i.e. install the specific libraries required for nextSIM-DG__ 
+2. __Activate your nextSIM-DG environment__ _[Do it each time you want to re-compile the code]_,
 3. __Compile the code,__
 4. __Run a simulation__.
    

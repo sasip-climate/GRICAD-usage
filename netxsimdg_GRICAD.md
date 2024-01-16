@@ -105,18 +105,22 @@ We give below the same example of simulation as the demo we ran in June 2023 at 
 # go to nextsim-dg directory
 cd ~/your-path/nextsimdg/run
 
-
+# link to the executable you've just compiled
 ln -sf ../build/nextsim
 
+# link to the initial state and forcing files
 ln -sf /summer/sasip/model-forcings/nextsim-dg/init_25km_NH.nc .
 ln -sf /summer/sasip/model-forcings/nextsim-dg/25km_NH.ERA5_2010-01-01_2011-01-01.nc .
 ln -sf /summer/sasip/model-forcings/nextsim-dg/25km_NH.TOPAZ4_2010-01-01_2011-01-01.nc .
 
+# run the model
 ./nextsim --config-file config_june23.cfg --model.run 86400 > time.step
 ```
-   - launch the job :
+
+* Makes the script executable and run it as a job with:
 
 ```bash
 chmod +x  run_june23_gricad.sh
 oarsub -S ./run_june23_gricad.sh
 ```
+NOTE: In the script above, you run the model using the config file `config_june23.cfg` where all the parameters are set. Any parameter set from the command line will overwrite the corresponding parameter value in the config file. In the example above, `--model.run 86400` sets the model run to 1 day (value given in seconds). 

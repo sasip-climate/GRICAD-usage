@@ -40,7 +40,8 @@ conda env create -n nextsimdg -f 2023-01-15-environment-nextsimdg.yml
 chmod +x  create_conda_env_nextsimdg.sh
 ```
 
-* Run this script on a computing node
+* Run this script on a computing node:
+```
 oarsub -S ./create_conda_env_nextsimdg.sh
 ```
 You can then monitor if your run is running and when it is finished with the command : `oarstat -u mygricadlogin`.

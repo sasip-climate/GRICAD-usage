@@ -74,7 +74,7 @@ git clone -b develop https://github.com/nextsimhub/nextsimdg.git nextsimdg
 # go to directory
 cd nextsimdg
 
-# create and go to a build directory where the code is going to be compiled
+# create and go to a ./build/ directory where the code is going to be compiled
 mkdir -p build
 cd build
 

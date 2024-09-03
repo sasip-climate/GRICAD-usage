@@ -13,41 +13,17 @@ This tuto explains the different steps  to go through in order to compile and ru
 To compile the neXtSIM-DG code, you need some specific librairies, namely `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`. 
 One way to do so is to create a conda environment that contains all these libraries (do it once for all). And then you'll then have to activate this environment  _each time_ we want to compile neXtSIM-DG, as also explained below. 
 
-The installation of the environment is a bit long to run on the frontal node so we put it in a script and launch it on a computing node. In the instructions below, the conda environment is created from a file where all the required libraries are specified (i.e. `2023-01-15-environment-nextsimdg.yml`). 
-
-* Copy this script to your space on the GRICAD server. Let's name it `create_conda_env_nextsimdg.sh` :
+The installation of the environment is a bit long to run on the frontal node so do it interactively on a computation node, request one with :
 
 ```bash
-#!/bin/bash
-
-#OAR -n nextsimdg
-#OAR -l /nodes=1/core=1,walltime=00:25:00
-#OAR --stdout conda.%jobid%.stdout
-#OAR --stderr conda.%jobid%.stderr
-#OAR --project pr-sasip
-#OAR -t devel
-
-# link to the required environment file for conda:
-ln -sf /summer/sasip/model-configurations/nextsim-DG/2023-01-15-environment-nextsimdg.yml .
-
-# activate conda
-source /applis/environments/conda.sh
-
-# create your nextsimdg environment
-conda env create -n nextsimdg -f 2023-01-15-environment-nextsimdg.yml
+oarsub -l /nodes=1/core=1,walltime=01:30:00 --project pr-sasip -I
 ```
 
-* Make the above script an executable :
+Once you are connected to a dahu or bigfoot node (you can see that the command line switch from yourlogin@f-dahu starts with yourlogin@dahu112 for instance), build the conda environment with the list of libraries specified ina file sitting on summer :
+
 ```bash
-chmod +x  create_conda_env_nextsimdg.sh
+conda create --name nextsimdg --file /summer/sasip/model-configurations/neXtSIM-DG/demo-june2023/spec-file-SLX.txt
 ```
-
-* Run this script on a computing node:
-```
-oarsub -S ./create_conda_env_nextsimdg.sh
-```
-You can then monitor if your run is running and when it is finished with the command : `oarstat -u mygricadlogin`.
-
 
 ## 2. <a name="part2"> Each time you start a new session and want to compile nextSIM-DG, activate its environment </a> 
 
@@ -62,19 +38,20 @@ conda activate nextsimdg
 source /applis/environments/conda.sh
 conda list
 ```
-It should contains the required packages: `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netCDF4`.
+It should contains the required packages: `cmake`,`boost`,`eigen`,`netcdf-cxx4`,`netcdf4`.
 
-You"re now ready to compile the NeXtSIM-DG code.
+You are now ready to compile the NeXtSIM-DG code.
 
 
 ## 3.  <a name="part3"> Compile neXtSIM-DG : </a> 
 
 ```bash
-# get latest version of the code from the github repo
+# download the develop branch version of the code
 git clone -b develop https://github.com/nextsimhub/nextsimdg.git nextsimdg
 
-# go to directory
+# go to directory and get the version of the code that is compatible with June 2023 hands-on :
 cd nextsimdg
+git checkout 493ec8fb
 
 # create and go to a ./build/ directory where the code is going to be compiled
 mkdir -p build

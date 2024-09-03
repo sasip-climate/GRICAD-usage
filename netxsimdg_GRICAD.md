@@ -19,7 +19,7 @@ The installation of the environment is a bit long to run on the frontal node so 
 oarsub -l /nodes=1/core=1,walltime=01:30:00 --project pr-sasip -I
 ```
 
-Once you are connected to a dahu or bigfoot node (you can see that the command line switch from yourlogin@f-dahu starts with yourlogin@dahu112 for instance), build the conda environment with the list of libraries specified ina file sitting on summer :
+Once you are connected to a dahu or bigfoot node (you can see that the start of the command line switched from yourlogin@f-dahu starts with yourlogin@dahu112 for instance), build the conda environment with the list of libraries specified ina file sitting on summer :
 
 ```bash
 conda create --name nextsimdg --file /summer/sasip/model-configurations/neXtSIM-DG/demo-june2023/spec-file-SLX.txt

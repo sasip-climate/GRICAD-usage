@@ -69,6 +69,10 @@ Be patient, as it might take several  minutes to compile. In the end, if success
 ## 4.  <a name="part4"> Run a simulation : </a> 
 We give below the same example of simulation as the demo we ran in June 2023 at the SASIP General assembly meeting.
 
+As it will complete under 30mn, we will run it on the devel class of jobs that is faster than the regular one, but for that we first need to connect to dahu-oar3 : ```ssh dahu-oar3```
+
+If your job needs more than 30mn, remove the ```#OAR -t devel``` line in the script below and no need to connect to dahu-oar3
+
 * Copy, adapt and put this `run_june23_gricad.sh` script in the `./run/` repository :
  
 ```bash

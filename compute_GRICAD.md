@@ -55,10 +55,10 @@ yourscript
 
  * Maximum time limit on dahu is 2 days
  
- * If your code is not in the production phase yet, you can ask to test it first on a development queue by adding the option ```-t devel``` to your oarsub command or in your job with a maximum time limit of 30 minutes 
+ * If your code is not in the production phase yet, you can ask to test it first on a development queue by adding the option ```-t devel``` to your oarsub command or in your job with a maximum time limit of 30 minutes, you first need to connect to dahu-oar3 first : ```ssh dahu-oar3```
  
  * Another useful queue is the fat one (option ```-t fat```and provide access to nodes with a total of 1.5Tb of RAM per node)
- *  A queue called visu is also available
+ * A queue called visu is also available
  
  * For more informations about jobs read https://gricad-doc.univ-grenoble-alpes.fr/en/hpc/joblaunch/
 
